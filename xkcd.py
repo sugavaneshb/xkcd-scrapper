@@ -7,7 +7,7 @@ import os, sys
 base_url = "http://www.xkcd.com/"
 total = 1242
 
-def down_them_all(directory='/home/local/ANT/sugavanb/xkcd/' , start = 1):
+def down_them_all(directory='/temp/xkcd/' , start = 1):
     links = [base_url + str(i) for i in range(start, total + 1)]
     print "Starting download of all links..."
     for url in links:
