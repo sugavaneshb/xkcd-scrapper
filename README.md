@@ -7,3 +7,6 @@ Dependencies:
 	BeautifulSoup4
 	urllib2
 	urllib
+
+Will be using to create a local mirror of the site.
+Rather than mirroring using curl or wget, this will consume less space as they use the same template through out the website :)
