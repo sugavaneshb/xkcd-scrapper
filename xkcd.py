@@ -6,9 +6,9 @@ from lxml.html.clean import Cleaner
 import codecs, string
 
 base_url = "http://www.xkcd.com/"
-total = 1242
+total = 1244
 
-def down_them_all(directory, start = 1):
+def down_them_all(directory , start = 1):
     links = [base_url + str(i) for i in range(start, total + 1)]
     print "Starting download of all links..."
     for url in links:
@@ -16,7 +16,7 @@ def down_them_all(directory, start = 1):
         if int(url.split('/')[-1]) != 404:
             down_content(url, directory + url.split('/')[-1] + '/')
 
-def down_content(url, directory = '/tmp/xkcd/'):
+def down_content(url, directory = '/tmp/xkcd'):
     if os.path.exists(directory):
         return
     html = urlopen(url).read()
@@ -35,7 +35,7 @@ def down_content(url, directory = '/tmp/xkcd/'):
         img_url = img_section.img['src']
         img_text = unicode(img_section.img['title'])
     #print ord(img_text[-1])
-    img_name = title + '.png'
+    img_name = title + '.' + img_url.split('.')[-1]
     os.makedirs(directory)
     imgpath = os.path.join(directory, img_name)
     textfile = os.path.join(directory, title + '.txt')
@@ -46,7 +46,7 @@ def down_content(url, directory = '/tmp/xkcd/'):
     print "Done with downloading" + url + "Check at" + directory
 
 if __name__ == '__main__':
-    directory = '/tmp/xkcd/'
+    directory = '/tmp/xkcd'
     #directory = raw_input('Where to store?')
     print "Let the game begin!"
     down_them_all(directory)
