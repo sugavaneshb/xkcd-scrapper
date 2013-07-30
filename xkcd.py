@@ -35,7 +35,7 @@ def down_content(url, directory = '/tmp/xkcd/'):
         img_url = img_section.img['src']
         img_text = unicode(img_section.img['title'])
     #print ord(img_text[-1])
-    img_name = title + '.jpeg'
+    img_name = title + '.png'
     os.makedirs(directory)
     imgpath = os.path.join(directory, img_name)
     textfile = os.path.join(directory, title + '.txt')
